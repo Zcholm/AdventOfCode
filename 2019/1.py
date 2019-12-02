@@ -1,3 +1,4 @@
+# Challenge: https://adventofcode.com/2019/day/1
 file = open("1_data.txt").readlines()
 
 def fuel_req(weight):
