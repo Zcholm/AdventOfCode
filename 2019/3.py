@@ -1,68 +1,74 @@
-def isCrossing(x, y, ):
-
-
 file = open("3_data.txt")
-
 lines = file.readlines()
-
-# Start by asserting the size of the grid:
-xmin = 0
-xmax = 0
-ymin = 0
-ymax = 0
 
 cableTurns =[[0,0]]
 
-line1 = lines[0]
-line2 = lines[1]
+lines[0] = lines[0].split(",")
+lines[1] = lines[1].split(",")
 
-line1 = line1.split(",")
-line2 = line2.split(",")
+cable= []
+crossings = []
 
-print(line1)
-print(line2)
+for line_idx, line in enumerate(lines):
+    x = 0
+    y = 0
+    length = 0
+    for turn_idx, turn in enumerate(lines[line_idx]):
+        dir = turn[:1]
+        dist = int(turn[1:])
 
-x = 0
-y = 0
+        for i in range(dist):
+            if dir == "R":
+                x += 1
+            elif dir == "L":
+                x -= 1
+            elif dir == "U":
+                y += 1
+            elif dir == "D":
+                y -= 1
 
-horizontalLines = []
-verticalLines = []
+            length += 1
+            if line_idx == 0:           # This little if statement will hog your cpu the coming 5-15 minutes, enjoy!
+                cable.append([x, y])
+            elif [x,y] in cable:
+                crossings.append([x,y])
 
-for turn in line1:
-    dir = turn[:1]
-    dist = int(turn[1:])
-    if dir == "R":
-        x += dist
-        xmax = max(xmax, x)
-        horizontalLines.append(y)
-    elif dir == "L":
-        x -= dist
-        xmin = min(xmin, x)
-        horizontalLines.append(y)
-    elif dir == "U":
-        y += dist
-        ymax = max(ymax, y)
-        verticalLines.append(x)
-    elif dir == "D":
-        y -= dist
-        ymin = min(ymin, y)
-        verticalLines.append(x)
-    cableTurns.append([x, y])
+closest = abs(crossings[0][0]) + abs(crossings[0][1])
 
+for crossing in crossings:
+    closest = min(closest, abs(crossing[0]) + abs(crossing[1]))
 
-print(verticalLines)
-print(horizontalLines)
+#print(crossings)
+print("The shortest Manhattan distance to a crossing is {}.".format(closest))
 
+# Part 2:
+noOfCrossings = len(crossings)
+lengths = [[0] * noOfCrossings, [0]*noOfCrossings]
 
+for line_idx, line in enumerate(lines):
+    x = 0
+    y = 0
+    length = 0
+    for turn_idx, turn in enumerate(lines[line_idx]):
+        dir = turn[:1]
+        dist = int(turn[1:])
 
+        for i in range(dist):
+            if dir == "R":
+                x += 1
+            elif dir == "L":
+                x -= 1
+            elif dir == "U":
+                y += 1
+            elif dir == "D":
+                y -= 1
+            length += 1
+            for cross_idx, crossing in enumerate(crossings):
+                if crossing == [x, y]:
+                    lengths[line_idx][cross_idx] = length
 
+totalLengths = []
+for idx, length in enumerate(lengths[0]):
+    totalLengths.append(lengths[0][idx] + lengths[1][idx])
 
-
-
-
-
-
-
-
-
-
+print("The shortest total cable length to a line crossing is {}.".format(min(totalLengths)))
