@@ -104,7 +104,7 @@ def run(code, inp):
     p = 0
     while code[p] != 99:
         op = code[p] % 100
-        print("PC is: {}, its OP is: {}".format(p, op))
+        # print("PC is: {}, its OP is: {}".format(p, op))
         m1 = int(("0000" + str(code[p]))[-3])
         m2 = int(("0000" + str(code[p]))[-4])
         if op == 1:
@@ -124,7 +124,7 @@ def run(code, inp):
         elif op == 8:
             p = eq(code, p, m1, m2)
 
-    print("PC is: {} OP is {}, exiting.".format(p, code[p]))
+    #print("PC is: {} OP is {}, exiting.".format(p, code[p]))
 
 
 file = open("5_data.txt")
