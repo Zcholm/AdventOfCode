@@ -1,3 +1,6 @@
+import time
+
+
 def add(code, p, m1, m2):
     if m1 == 0:
         adr1 = code[p + 1]
@@ -104,7 +107,8 @@ def run(code, inp):
     p = 0
     while code[p] != 99:
         op = code[p] % 100
-        # print("PC is: {}, its OP is: {}".format(p, op))
+        print("PC is: {}, its OP is: {}".format(p, op))
+        time.sleep(1)
         m1 = int(("0000" + str(code[p]))[-3])
         m2 = int(("0000" + str(code[p]))[-4])
         if op == 1:
@@ -127,6 +131,16 @@ def run(code, inp):
     #print("PC is: {} OP is {}, exiting.".format(p, code[p]))
 
 
+def permute(a, l, r):
+    if l == r:
+        global perms
+        perms.append(a.copy())
+    else:
+        for i in range(l, r + 1):
+            a[l], a[i] = a[i], a[l]
+            permute(a, l + 1, r)
+            a[l], a[i] = a[i], a[l]  # backtrack
+
 file = open("5_data.txt")
 strdata = file.read().split(",")
 dat = []
@@ -134,4 +148,10 @@ dat = []
 for val in strdata:
     dat.append(int(val))
 
-run(dat, 5)
+perms = []
+
+settings = [0, 1, 2, 3, 4]
+n = len(settings)
+permute(settings, 0, n - 1)
+
+run(dat, 0)
