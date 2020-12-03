@@ -29,14 +29,14 @@ def trees (dx, dy):
     y = 0
     x = 0
 
-    while (True):
+    while (y < height):
         if data[y][x] == '#':
             trees = trees + 1
 
         x = go_right(x, dx)
         y = go_down(y, dy)
-        if y >= height:
-            return trees
+
+    return trees
 
 print(trees(3,1))
 print(trees(1,1) * trees(3,1) * trees(5,1) * trees(7,1) * trees(1,2))
