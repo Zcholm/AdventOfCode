@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-import re
-#2: >6269, <10000
 
 def get_data():
     data = []
@@ -10,10 +8,8 @@ def get_data():
            data.append(line.strip())
     return data
 
-pc = 0
-acc = 0
+pc = acc = 0
 visited = []
-data = None
 
 def execute(data, verbose = False):
     global pc, acc, visited, last_jmp
@@ -23,17 +19,11 @@ def execute(data, verbose = False):
 
     [op, arg] = data[pc].split(' ')
 
-    if op == "nop":
-        pc += 1
-    elif op == "acc":
-        acc += int(arg)
-        pc += 1
-    elif op == "jmp":
-        pc += int(arg)
+    pc += 1 if (op == "nop" or op == "acc") else int(arg)
+    acc += int(arg) if op == "acc" else 0
 
     if pc in visited:
-        if verbose:
-            print("Infinite loop detected! ACC = {0}".format(acc))
+        print("Infinite loop detected! ACC = {0}".format(acc)) if verbose else 0
         return 0
     else:
         visited.append(pc)
@@ -42,26 +32,22 @@ def execute(data, verbose = False):
 def main():
     data = get_data()
 
-    executes = 0
-    while (execute(data, verbose = True) == 1):
-        executes += 1
+    while (execute(data, verbose = True) == 1): pass
 
     for i in range(len(data)):
         global pc, acc, visited
-        pc = 0
-        acc = 0
+        pc = acc = 0
         visited = []
 
+        new_data = data.copy()
+
         if data[i].startswith("jmp"):
-            new_data = data.copy()
             new_data[i] = new_data[i].replace("jmp", "nop", 1)
 
         elif data[i].startswith("nop"):
-            new_data = data.copy()
             new_data[i] = new_data[i].replace("nop", "jmp", 1)
 
-        else:
-            continue
+        else: continue
 
         result = 1
         while (result == 1):
@@ -71,7 +57,6 @@ def main():
             print("Finished executing, ACC = {0}, line {1} changed".format(acc, i + 1))
             print("Old: \'" + data[i] + "\'")
             print("New: \'" + new_data[i] + "\'")
-
 
 
 if __name__ == "__main__":
