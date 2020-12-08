@@ -11,10 +11,11 @@ def get_data():
 pc = acc = 0
 visited = []
 
-def execute(data, verbose = False):
-    global pc, acc, visited, last_jmp
+def execute(data, part = 0):
+    global pc, acc, visited
 
     if pc >= len(data):
+        print("Finished executing, ACC = {0}".format(acc)) if part == 2 else 0
         return 2
 
     [op, arg] = data[pc].split(' ')
@@ -23,7 +24,7 @@ def execute(data, verbose = False):
     acc += int(arg) if op == "acc" else 0
 
     if pc in visited:
-        print("Infinite loop detected! ACC = {0}".format(acc)) if verbose else 0
+        print("Infinite loop detected! ACC = {0}".format(acc)) if part == 1 else 0
         return 0
     else:
         visited.append(pc)
@@ -32,7 +33,7 @@ def execute(data, verbose = False):
 def main():
     data = get_data()
 
-    while (execute(data, verbose = True) == 1): pass
+    while (execute(data, part = 1) == 1): pass
 
     for i in range(len(data)):
         global pc, acc, visited
@@ -49,14 +50,7 @@ def main():
 
         else: continue
 
-        result = 1
-        while (result == 1):
-            result = execute(new_data)
-
-        if result == 2:
-            print("Finished executing, ACC = {0}, line {1} changed".format(acc, i + 1))
-            print("Old: \'" + data[i] + "\'")
-            print("New: \'" + new_data[i] + "\'")
+        while (execute(new_data, part = 2) == 1): pass
 
 
 if __name__ == "__main__":
