@@ -20,7 +20,7 @@ def execute(data, part = 0):
 
     [op, arg] = data[pc].split(' ')
 
-    pc += 1 if (op == "nop" or op == "acc") else int(arg)
+    pc += int(arg) if op == "jmp" else 1
     acc += int(arg) if op == "acc" else 0
 
     if pc in visited:
