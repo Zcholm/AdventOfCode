@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 
 def get_data(s):
-    data = []
     with open(s) as f:
-       for line in f.readlines():
-           data.append(int(line.strip()))
-    return data
+        return [int(line.strip()) for line in f.readlines()]
 
 
 def is_sum_of_two(values, val):
@@ -26,15 +23,11 @@ def find_contigous_set(data, preamble):
     [idx, val] = get_weakness(data, preamble)
 
     for i in range(get_weakness(data, preamble)[0]):
-        j = i
-        cumsum = data[i]
-        tested = [cumsum]
-        while cumsum < val and j < len(data):
+        j = i + 1
+        while sum(data[i : j]) < val and j <= len(data):
             j += 1
-            cumsum += data[j]
-            tested.append(data[j])
-        if cumsum == data[idx]:
-            return (min(tested) + max(tested))
+        if (sum(data[i : j]) == val):
+            return (min(data[i : j]) + max(data[i : j]))
 
 
 def main():
