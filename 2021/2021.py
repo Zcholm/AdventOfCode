@@ -12,7 +12,7 @@ def number_of_changes (indata):
     increase = -1 #first one will trigger a false increase
     decrease = 0
     same = 0
-    prev = -9999999999999999999999999999999
+    prev = -float('inf')
 
     for point in intify(indata):
         if point == prev:
@@ -61,475 +61,326 @@ def move_x_phi (instruction, pos):
         pos[2] -= int (dist)
 
 
-def example_1a ():
-    return number_of_changes (get_input ("01_input_example.txt"))[1]
+def solution_1a (filename):
+    ans = number_of_changes (get_input (filename))[1]
+    assert (ans == 7 or ans == 1154)
+    return ans
 
-def solution_1a ():
-    return number_of_changes (get_input ("01_input.txt"))[1]
+def solution_1b (filename):
+    ans = number_of_changes (three_slide_sums(get_input (filename)))[1]
+    assert (ans == 5 or ans == 1127)
+    return ans
 
-def example_1b ():
-    return number_of_changes (three_slide_sums(get_input ("01_input_example.txt")))[1]
-
-def solution_1b ():
-    return number_of_changes (three_slide_sums(get_input ("01_input.txt")))[1]
-
-def example_2a ():
+def solution_2a (filename):
     pos = [0, 0]
-    for line in get_input ("02_input_example.txt"):
+    for line in get_input (filename):
         move_xy (line, pos)
-    return pos[0] * pos [1]
+    ans = pos[0] * pos [1]
+    assert (ans == 150 or ans == 2322630)
+    return ans
 
-def solution_2a ():
-    pos = [0, 0]
-    for line in get_input ("02_input.txt"):
-        move_xy (line, pos)
-    return pos[0] * pos [1]
-
-def example_2b ():
+def solution_2b (filename):
     pos = [0, 0, 0]
-    for line in get_input ("02_input_example.txt"):
+    for line in get_input (filename):
         move_x_phi (line, pos)
-    return pos[0] * pos [1]
+    ans = pos[0] * pos [1]
+    assert (ans == 900 or ans == 2105273490)
+    return ans
 
-def solution_2b ():
-    pos = [0, 0, 0]
-    for line in get_input ("02_input.txt"):
-        move_x_phi (line, pos)
-    return pos[0] * pos [1]
-
-def example_3a ():
-    return "Hold your horses"
-
-def solution_3a ():
-    return "Hold your horses"
-
-def example_3b ():
-    return "Hold your horses"
-
-def solution_3b ():
-    return "Hold your horses"
-
-def example_4a ():
-    return "Hold your horses"
-
-def solution_4a ():
-    return "Hold your horses"
-
-def example_4b ():
-    return "Hold your horses"
-
-def solution_4b ():
-    return "Hold your horses"
-
-def example_5a ():
-    return "Hold your horses"
-
-def solution_5a ():
-    return "Hold your horses"
-
-def example_5b ():
-    return "Hold your horses"
-
-def solution_5b ():
-    return "Hold your horses"
-
-def example_6a ():
-    return "Hold your horses"
-
-def solution_6a ():
-    return "Hold your horses"
-
-def example_6b ():
-    return "Hold your horses"
-
-def solution_6b ():
-    return "Hold your horses"
-
-def example_7a ():
-    return "Hold your horses"
-
-def solution_7a ():
-    return "Hold your horses"
-
-def example_7b ():
-    return "Hold your horses"
-
-def solution_7b ():
-    return "Hold your horses"
-
-def example_8a ():
-    return "Hold your horses"
-
-def solution_8a ():
-    return "Hold your horses"
-
-def example_8b ():
-    return "Hold your horses"
-
-def solution_8b ():
-    return "Hold your horses"
-
-def example_9a ():
-    return "Hold your horses"
-
-def solution_9a ():
-    return "Hold your horses"
-
-def example_9b ():
-    return "Hold your horses"
-
-def solution_9b ():
-    return "Hold your horses"
-
-def example_10a ():
-    return "Hold your horses"
-
-def solution_10a ():
-    return "Hold your horses"
-
-def example_10b ():
-    return "Hold your horses"
-
-def solution_10b ():
-    return "Hold your horses"
-
-def example_11a ():
-    return "Hold your horses"
-
-def solution_11a ():
-    return "Hold your horses"
-
-def example_11b ():
-    return "Hold your horses"
-
-def solution_11b ():
-    return "Hold your horses"
-
-def example_12a ():
-    return "Hold your horses"
-
-def solution_12a ():
-    return "Hold your horses"
-
-def example_12b ():
-    return "Hold your horses"
-
-def solution_12b ():
-    return "Hold your horses"
-
-def example_13a ():
-    return "Hold your horses"
-
-def solution_13a ():
-    return "Hold your horses"
-
-def example_13b ():
-    return "Hold your horses"
-
-def solution_13b ():
-    return "Hold your horses"
-
-def example_14a ():
+def solution_3a (filename):
     return "Hold your horses"
 
-def solution_14a ():
+def solution_3b (filename):
     return "Hold your horses"
 
-def example_14b ():
+def solution_4a (filename):
     return "Hold your horses"
 
-def solution_14b ():
+def solution_4b (filename):
     return "Hold your horses"
 
-def example_15a ():
+def solution_5a (filename):
     return "Hold your horses"
 
-def solution_15a ():
+def solution_5b (filename):
     return "Hold your horses"
 
-def example_15b ():
+def solution_6a (filename):
     return "Hold your horses"
 
-def solution_15b ():
+def solution_6b (filename):
     return "Hold your horses"
 
-def example_16a ():
+def solution_7a (filename):
     return "Hold your horses"
 
-def solution_16a ():
+def solution_7b (filename):
     return "Hold your horses"
 
-def example_16b ():
+def solution_8a (filename):
     return "Hold your horses"
 
-def solution_16b ():
+def solution_8b (filename):
     return "Hold your horses"
 
-def example_17a ():
+def solution_9a (filename):
     return "Hold your horses"
 
-def solution_17a ():
+def solution_9b (filename):
     return "Hold your horses"
 
-def example_17b ():
+def solution_10a (filename):
     return "Hold your horses"
 
-def solution_17b ():
+def solution_10b (filename):
     return "Hold your horses"
 
-def example_18a ():
+def solution_11a (filename):
     return "Hold your horses"
 
-def solution_18a ():
+def solution_11b (filename):
     return "Hold your horses"
 
-def example_18b ():
+def solution_12a (filename):
     return "Hold your horses"
 
-def solution_18b ():
+def solution_12b (filename):
     return "Hold your horses"
 
-def example_19a ():
+def solution_13a (filename):
     return "Hold your horses"
 
-def solution_19a ():
+def solution_13b (filename):
     return "Hold your horses"
 
-def example_19b ():
+def solution_14a (filename):
     return "Hold your horses"
 
-def solution_19b ():
+def solution_14b (filename):
     return "Hold your horses"
 
-def example_20a ():
+def solution_15a (filename):
     return "Hold your horses"
 
-def solution_20a ():
+def solution_15b (filename):
     return "Hold your horses"
 
-def example_20b ():
+def solution_16a (filename):
     return "Hold your horses"
 
-def solution_20b ():
+def solution_16b (filename):
     return "Hold your horses"
 
-def example_21a ():
+def solution_17a (filename):
     return "Hold your horses"
 
-def solution_21a ():
+def solution_17b (filename):
     return "Hold your horses"
 
-def example_21b ():
+def solution_18a (filename):
     return "Hold your horses"
 
-def solution_21b ():
+def solution_18b (filename):
     return "Hold your horses"
 
-def example_22a ():
+def solution_19a (filename):
     return "Hold your horses"
 
-def solution_22a ():
+def solution_19b (filename):
     return "Hold your horses"
 
-def example_22b ():
+def solution_20a (filename):
     return "Hold your horses"
 
-def solution_22b ():
+def solution_20b (filename):
     return "Hold your horses"
 
-def example_23a ():
+def solution_21a (filename):
     return "Hold your horses"
 
-def solution_23a ():
+def solution_21b (filename):
     return "Hold your horses"
 
-def example_23b ():
+def solution_22a (filename):
     return "Hold your horses"
 
-def solution_23b ():
+def solution_22b (filename):
     return "Hold your horses"
 
-def example_24a ():
+def solution_23a (filename):
     return "Hold your horses"
 
-def solution_24a ():
+def solution_23b (filename):
     return "Hold your horses"
 
-def example_24b ():
+def solution_24a (filename):
     return "Hold your horses"
 
-def solution_24b ():
+def solution_24b (filename):
     return "Hold your horses"
 
 
 def main ():
     print ("====== 1a =======")
-    print (example_1a ())
-    print (solution_1a ())
+    print (solution_1a ("01_input_example.txt"))
+    print (solution_1a ("01_input.txt"))
     print ("====== 1b =======")
-    print (example_1b ())
-    print (solution_1b ())
+    print (solution_1b ("01_input_example.txt"))
+    print (solution_1b ("01_input.txt"))
 
     print ("====== 2a =======")
-    print (example_2a ())
-    print (solution_2a ())
+    print (solution_2a ("02_input_example.txt"))
+    print (solution_2a ("02_input.txt"))
     print ("====== 2b =======")
-    print (example_2b ())
-    print (solution_2b ())
-
-    print ("====== 3a =======")
-    print (example_3a ())
-    print (solution_3a ())
-    print ("====== 3b =======")
-    print (example_3b ())
-    print (solution_3b ())
+    print (solution_2b ("02_input_example.txt"))
+    print (solution_2b ("02_input.txt"))
 
     print ("====== 4a =======")
-    print (example_4a ())
-    print (solution_4a ())
+    print (solution_4a ("04_input_example.txt"))
+    print (solution_4a ("04_input.txt"))
     print ("====== 4b =======")
-    print (example_4b ())
-    print (solution_4b ())
+    print (solution_4b ("04_input_example.txt"))
+    print (solution_4b ("04_input.txt"))
 
     print ("====== 5a =======")
-    print (example_5a ())
-    print (solution_5a ())
+    print (solution_5a ("05_input_example.txt"))
+    print (solution_5a ("05_input.txt"))
     print ("====== 5b =======")
-    print (example_5b ())
-    print (solution_5b ())
+    print (solution_5b ("05_input_example.txt"))
+    print (solution_5b ("05_input.txt"))
 
     print ("====== 6a =======")
-    print (example_6a ())
-    print (solution_6a ())
+    print (solution_6a ("06_input_example.txt"))
+    print (solution_6a ("06_input.txt"))
     print ("====== 6b =======")
-    print (example_6b ())
-    print (solution_6b ())
+    print (solution_6b ("06_input_example.txt"))
+    print (solution_6b ("06_input.txt"))
 
     print ("====== 7a =======")
-    print (example_7a ())
-    print (solution_7a ())
+    print (solution_7a ("07_input_example.txt"))
+    print (solution_7a ("07_input.txt"))
     print ("====== 7b =======")
-    print (example_7b ())
-    print (solution_7b ())
+    print (solution_7b ("07_input_example.txt"))
+    print (solution_7b ("07_input.txt"))
 
     print ("====== 8a =======")
-    print (example_8a ())
-    print (solution_8a ())
+    print (solution_8a ("08_input_example.txt"))
+    print (solution_8a ("08_input.txt"))
     print ("====== 8b =======")
-    print (example_8b ())
-    print (solution_8b ())
+    print (solution_8b ("08_input_example.txt"))
+    print (solution_8b ("08_input.txt"))
 
     print ("====== 9a =======")
-    print (example_9a ())
-    print (solution_9a ())
+    print (solution_9a ("09_input_example.txt"))
+    print (solution_9a ("09_input.txt"))
     print ("====== 9b =======")
-    print (example_9b ())
-    print (solution_9b ())
+    print (solution_9b ("09_input_example.txt"))
+    print (solution_9b ("09_input.txt"))
 
     print ("====== 10a =======")
-    print (example_10a ())
-    print (solution_10a ())
+    print (solution_10a ("10_input_example.txt"))
+    print (solution_10a ("10_input.txt"))
     print ("====== 10b =======")
-    print (example_10b ())
-    print (solution_10b ())
+    print (solution_10b ("10_input_example.txt"))
+    print (solution_10b ("10_input.txt"))
 
     print ("====== 11a =======")
-    print (example_11a ())
-    print (solution_11a ())
+    print (solution_11a ("11_input_example.txt"))
+    print (solution_11a ("11_input.txt"))
     print ("====== 11b =======")
-    print (example_11b ())
-    print (solution_11b ())
+    print (solution_11b ("11_input_example.txt"))
+    print (solution_11b ("11_input.txt"))
 
     print ("====== 12a =======")
-    print (example_12a ())
-    print (solution_12a ())
+    print (solution_12a ("12_input_example.txt"))
+    print (solution_12a ("12_input.txt"))
     print ("====== 12b =======")
-    print (example_12b ())
-    print (solution_12b ())
+    print (solution_12b ("12_input_example.txt"))
+    print (solution_12b ("12_input.txt"))
 
     print ("====== 13a =======")
-    print (example_13a ())
-    print (solution_13a ())
+    print (solution_13a ("13_input_example.txt"))
+    print (solution_13a ("13_input.txt"))
     print ("====== 13b =======")
-    print (example_13b ())
-    print (solution_13b ())
+    print (solution_13b ("13_input_example.txt"))
+    print (solution_13b ("13_input.txt"))
 
     print ("====== 14a =======")
-    print (example_14a ())
-    print (solution_14a ())
+    print (solution_14a ("14_input_example.txt"))
+    print (solution_14a ("14_input.txt"))
     print ("====== 14b =======")
-    print (example_14b ())
-    print (solution_14b ())
+    print (solution_14b ("14_input_example.txt"))
+    print (solution_14b ("14_input.txt"))
 
     print ("====== 15a =======")
-    print (example_15a ())
-    print (solution_15a ())
+    print (solution_15a ("15_input_example.txt"))
+    print (solution_15a ("15_input.txt"))
     print ("====== 15b =======")
-    print (example_15b ())
-    print (solution_15b ())
+    print (solution_15b ("15_input_example.txt"))
+    print (solution_15b ("15_input.txt"))
 
     print ("====== 16a =======")
-    print (example_16a ())
-    print (solution_16a ())
+    print (solution_16a ("16_input_example.txt"))
+    print (solution_16a ("16_input.txt"))
     print ("====== 16b =======")
-    print (example_16b ())
-    print (solution_16b ())
+    print (solution_16b ("16_input_example.txt"))
+    print (solution_16b ("16_input.txt"))
 
     print ("====== 17a =======")
-    print (example_17a ())
-    print (solution_17a ())
+    print (solution_17a ("17_input_example.txt"))
+    print (solution_17a ("17_input.txt"))
     print ("====== 17b =======")
-    print (example_17b ())
-    print (solution_17b ())
+    print (solution_17b ("17_input_example.txt"))
+    print (solution_17b ("17_input.txt"))
 
     print ("====== 18a =======")
-    print (example_18a ())
-    print (solution_18a ())
+    print (solution_18a ("18_input_example.txt"))
+    print (solution_18a ("18_input.txt"))
     print ("====== 18b =======")
-    print (example_18b ())
-    print (solution_18b ())
+    print (solution_18b ("18_input_example.txt"))
+    print (solution_18b ("18_input.txt"))
 
     print ("====== 19a =======")
-    print (example_19a ())
-    print (solution_19a ())
+    print (solution_19a ("19_input_example.txt"))
+    print (solution_19a ("19_input.txt"))
     print ("====== 19b =======")
-    print (example_19b ())
-    print (solution_19b ())
+    print (solution_19b ("19_input_example.txt"))
+    print (solution_19b ("19_input.txt"))
 
     print ("====== 20a =======")
-    print (example_20a ())
-    print (solution_20a ())
+    print (solution_20a ("20_input_example.txt"))
+    print (solution_20a ("20_input.txt"))
     print ("====== 20b =======")
-    print (example_20b ())
-    print (solution_20b ())
+    print (solution_20b ("20_input_example.txt"))
+    print (solution_20b ("20_input.txt"))
 
     print ("====== 21a =======")
-    print (example_21a ())
-    print (solution_21a ())
+    print (solution_21a ("21_input_example.txt"))
+    print (solution_21a ("21_input.txt"))
     print ("====== 21b =======")
-    print (example_21b ())
-    print (solution_21b ())
+    print (solution_21b ("21_input_example.txt"))
+    print (solution_21b ("21_input.txt"))
 
     print ("====== 22a =======")
-    print (example_22a ())
-    print (solution_22a ())
+    print (solution_22a ("22_input_example.txt"))
+    print (solution_22a ("22_input.txt"))
     print ("====== 22b =======")
-    print (example_22b ())
-    print (solution_22b ())
+    print (solution_22b ("22_input_example.txt"))
+    print (solution_22b ("22_input.txt"))
 
     print ("====== 23a =======")
-    print (example_23a ())
-    print (solution_23a ())
+    print (solution_23a ("23_input_example.txt"))
+    print (solution_23a ("23_input.txt"))
     print ("====== 23b =======")
-    print (example_23b ())
-    print (solution_23b ())
+    print (solution_23b ("23_input_example.txt"))
+    print (solution_23b ("23_input.txt"))
 
     print ("====== 24a =======")
-    print (example_24a ())
-    print (solution_24a ())
+    print (solution_24a ("24_input_example.txt"))
+    print (solution_24a ("24_input.txt"))
     print ("====== 24b =======")
-    print (example_24b ())
-    print (solution_24b ())
+    print (solution_24b ("24_input_example.txt"))
+    print (solution_24b ("24_input.txt"))
 
 if __name__ == "__main__":
     main ()
